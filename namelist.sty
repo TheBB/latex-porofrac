@@ -1,0 +1,28 @@
+% PURPOSE:
+%     Namelist generates a list with item width of your choice.
+%
+% COMMAND FORMAT:
+%     \begin{namelist}{<width>}
+%     :
+%     \end{namelist}
+%
+% NOTES:
+%     The items are not written in boldface if not explicitly specified.
+%     This is in contrast to \begin{description}.
+%
+% REFERENCES:
+%     Buerger, D. J.: "LaTeX for Scientist and Engineers",
+%     pp. 28-29, McGraw-Hill Publishing Company, New York, 1990.
+%
+\newcommand{\namelistlabel}[1]{\mbox{#1}\hfil}
+\newenvironment{namelist}[1]
+{
+  \begin{list}{}
+  {
+    \let\makelabel\namelistlabel
+    \settowidth{\labelwidth}{#1}
+    \setlength{\leftmargin}{1.1\labelwidth}
+  }
+}{
+  \end{list}
+}
